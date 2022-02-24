@@ -31,4 +31,23 @@ jobs:
                 echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
                 chmod 600 ~/.ssh/id_rsa
                 ssh-keyscan "114.116.32.67" >> ~/.ssh/known_hosts
-                echo 123
+          echo 123
+      - name: deploy # 部署
+        run: |
+          ssh root@114.116.32.67 "
+            # 【注意】用 work 账号登录，手动创建 /home/root 目录
+            # 然后 git clone https://username:password@github.com/xxx/xxx.git -b dev （私有仓库，使用 github 用户名和密码）
+            # 记得删除 origin ，否则会暴露 github 密码
+            echo 2
+            cd /home/root/gitActionAndDockerNode;
+            echo 3
+            git remote add origin https://github.com/ls57765867/gitActionAndDockerNode.git;
+            git checkout main;
+            git pull origin main; # 重新下载最新代码
+            git remote remove origin; # 删除 origin ，否则会暴露 github 密码
+            # 启动 docker
+            docker-compose build node-server; # 和 docker-compose.yml service 名字一致
+            docker-compose up -d;
+          "
+      - name: delete ssh key # 删除 ssh key
+        run: rm -rf ~/.ssh/id_rsa
