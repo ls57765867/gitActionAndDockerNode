@@ -1,37 +1,51 @@
-#.github/workflows/demo.yml
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# github actions 中文文档 https://docs.github.com/cn/actions/getting-started-with-github-actions
 
-name: demo
-#哪个操作触发 这里就是git push
+name: deploy for dev
+
 on:
   push:
-    #哪个分支上会触发
     branches:
-      - master
-      - main
-    #修改了哪些文件会触发
+      - 'master'
+      - 'main'
     paths:
-      - '.github/workflows/**'
-      - '__test__/**'
+      - '.github/workflows/*'
+      # - '__test__/**' # dev 不需要立即测试
       - 'src/**'
-      - './**'
-      - './*.js'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+      - 'bin/*'
+      - './**/*'
+      - './*'
 
-#任务
 jobs:
-  #步骤
-  deploy:
-    #在什么操作系统运行  这个是默认
+  deploy-dev:
     runs-on: ubuntu-latest
-    #一个-代表一个步骤 下面有三个步骤
+
     steps:
-      - uses: actions/checkout@v2 # git pull ，第三方的 actions
-      - name: Use Node.js # 设置名字
-        uses: actions/setup-node@v1 # 安装 nodejs ， 第三方的 actions
-        with:  #设置版本号
-          node-version: 16
-      - name: print node version
-        # 如果要多行 语法为 | 然后跟上
+      - uses: actions/checkout@v2
+      - name: set ssh key # 临时设置 ssh key
         run: |
-          npm i
-          npm i pm2 -g
-          npm run serve
+          mkdir -p ~/.ssh/
+          echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/ls57765867/gitActionAndDockerNode/settings/secrets/actions/new
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan "114.116.32.67" >> ~/.ssh/known_hosts
+      - name: deploy # 部署
+        run: |
+          ssh root@114.116.32.67"
+            # 【注意】用 work 账号登录，手动创建 /home/root/node-test 目录
+            # 然后 git clone https://username:password@github.com/imooc-lego/biz-editor-server.git -b dev （私有仓库，使用 github 用户名和密码）
+            # 记得删除 origin ，否则会暴露 github 密码
+
+            cd /home/root/node-test/node-;
+            git remote add origin https://wangfupeng1988:${{secrets.WFP_PASSWORD}}@github.com/imooc-lego/biz-editor-server.git;
+            git checkout dev;
+            git pull origin dev; # 重新下载最新代码
+            git remote remove origin; # 删除 origin ，否则会暴露 github 密码
+            # 启动 docker
+            docker-compose build editor-server; # 和 docker-compose.yml service 名字一致
+            docker-compose up -d;
+          "
+      - name: delete ssh key # 删除 ssh key
+        run: rm -rf ~/.ssh/id_rsa
