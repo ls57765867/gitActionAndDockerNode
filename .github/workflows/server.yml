@@ -28,9 +28,8 @@ jobs:
       - name: set ssh key # 临时设置 ssh key
         run: |
           mkdir -p ~/.ssh/
-          echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/ls57765867/gitActionAndDockerNode/settings/secrets/actions/new
+          echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
           chmod 600 ~/.ssh/id_rsa
-          echo "${{secrets.WFP_ID_RSA}}"
           ssh-keyscan "114.116.32.67" >> ~/.ssh/known_hosts
       - name: deploy # 部署
         run: |
