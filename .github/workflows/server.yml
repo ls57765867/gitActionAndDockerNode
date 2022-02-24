@@ -33,4 +33,5 @@ jobs:
         # 如果要多行 语法为 | 然后跟上
         run: |
           npm i
+          npm i pm2 -g
           npm run serve
