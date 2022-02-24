@@ -13,8 +13,8 @@ on:
       - '.github/workflows/**'
       - '__test__/**'
       - 'src/**'
-      - '/**'
-      - '/*.js'
+      - './**'
+      - './*.js'
 
 #任务
 jobs:
