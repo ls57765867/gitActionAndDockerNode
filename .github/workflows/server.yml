@@ -1,0 +1,36 @@
+#.github/workflows/demo.yml
+
+name: demo
+#哪个操作触发 这里就是git push
+on:
+  push:
+    #哪个分支上会触发
+    branches:
+      - master
+      - main
+    #修改了哪些文件会触发
+    paths:
+      - '.github/workflows/**'
+      - '__test__/**'
+      - 'src/**'
+      - '/**'
+      - '/*'
+
+#任务
+jobs:
+  #步骤
+  deploy:
+    #在什么操作系统运行  这个是默认
+    runs-on: ubuntu-latest
+    #一个-代表一个步骤 下面有三个步骤
+    steps:
+      - uses: actions/checkout@v2 # git pull ，第三方的 actions
+      - name: Use Node.js # 设置名字
+        uses: actions/setup-node@v1 # 安装 nodejs ， 第三方的 actions
+        with:  #设置版本号
+          node-version: 16
+      - name: print node version
+        # 如果要多行 语法为 | 然后跟上
+        run: |
+          npm i
+          npm run serve
