@@ -7,8 +7,7 @@ name: deploy for dev
 on:
   push:
     branches:
-      - 'master'
-      - 'main'
+      - 'dev' # 只针对 dev 分支
     paths:
       - '.github/workflows/*'
       # - '__test__/**' # dev 不需要立即测试
@@ -16,12 +15,11 @@ on:
       - 'Dockerfile'
       - 'docker-compose.yml'
       - 'bin/*'
-      - './**/*'
-      - './*'
 
 jobs:
   deploy-dev:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: set ssh key # 临时设置 ssh key
@@ -29,24 +27,22 @@ jobs:
           mkdir -p ~/.ssh/
           echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan "114.116.32.67" >> ~/.ssh/known_hosts
-          echo 123
+          ssh-keyscan 114.116.32.67 >> ~/.ssh/known_hosts
       - name: deploy # 部署
         run: |
-            ssh work@114.116.32.67 "
-              # 【注意】用 work 账号登录，手动创建 /home/root 目录
-              # 然后 git clone https://username:password@github.com/xxx/xxx.git -b dev （私有仓库，使用 github 用户名和密码）
-              # 记得删除 origin ，否则会暴露 github 密码
-              echo 2
-              cd /home/root/gitActionAndDockerNode;
-              echo 3
-              git remote add origin https://github.com/ls57765867/gitActionAndDockerNode.git;
-              git checkout main;
-              git pull origin main; # 重新下载最新代码
-              git remote remove origin; # 删除 origin ，否则会暴露 github 密码
-              # 启动 docker
-              docker-compose build node-server; # 和 docker-compose.yml service 名字一致
-              docker-compose up -d;
-            "
+          ssh work@114.116.32.67 "
+            # 【注意】用 work 账号登录，手动创建 /home/work/imooc-lego 目录
+            # 然后 git clone https://username:password@github.com/imooc-lego/biz-editor-server.git -b dev （私有仓库，使用 github 用户名和密码）
+            # 记得删除 origin ，否则会暴露 github 密码
+            echo 123
+            cd /home/work/imooc-lego/biz-editor-server;
+            git remote add origin https://wangfupeng1988:${{secrets.WFP_PASSWORD}}@github.com/imooc-lego/biz-editor-server.git;
+            git checkout dev;
+            git pull origin dev; # 重新下载最新代码
+            git remote remove origin; # 删除 origin ，否则会暴露 github 密码
+            # 启动 docker
+            docker-compose build editor-server; # 和 docker-compose.yml service 名字一致
+            docker-compose up -d;
+          "
       - name: delete ssh key # 删除 ssh key
         run: rm -rf ~/.ssh/id_rsa
