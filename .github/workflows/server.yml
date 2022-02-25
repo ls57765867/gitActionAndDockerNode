@@ -25,3 +25,10 @@ jobs:
     steps:
       - name: ssh
         uses: appleboy/ssh-action@master
+        with:
+          host: "114.116.32.67:22"
+          username: "work"
+          password: "Crouch__11"
+          command_timeout: 5m
+      script: |
+        echo 123123
