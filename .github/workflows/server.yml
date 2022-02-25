@@ -21,12 +21,14 @@ on:
 jobs:
   deploy-dev:
     runs-on: ubuntu-latest
-  steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
-      with:
-        host: 114.116.32.67
-        username: work
-        password: Crouch__11
-        command_timeout: 5m
-        script: echo 123
+
+    steps:
+      - name: set ssh key # 临时设置 ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: 114.116.32.67
+          username: work
+          password: Crouch__11
+          command_timeout: 5m
+      script: |
+        echo 123123
