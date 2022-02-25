@@ -27,55 +27,11 @@ jobs:
       - name: set ssh key # 临时设置 ssh key
         run: |
           mkdir -p ~/.ssh/
-          echo -----BEGIN OPENSSH PRIVATE KEY-----
-               b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABDjYgKFdt
-               l/712UkgLlAxBYAAAAEAAAAAEAAAGXAAAAB3NzaC1yc2EAAAADAQABAAABgQDTY162B43X
-               LLE2ola535Z+10vWkk/AYOc6AGgZ4IUMKPdVXk75vK017Oe6/pPQ2mSE/SpMyTijjvQhS4
-               8jFFxJWDdKZ7AtLgZsTZaLYo6YMsTuZ57oLb74YKt6L9FFLra9qFNgXzKvUX7kJzR16jt9
-               jqpvywz3DL0Ea9oEzfPdlGSKj7yE+UCKYYMyP89Z/bVz8I+M1xdHz7SSdRk6o6G+sl9qFS
-               RjSInD0TaytBD92EWt2HQp+4s6LvGTb9Vbja7qo1EssXYZAk1OmmQdWazyOK/D6f/Xp2ND
-               6SZsOVUQ4jFMn9wP+6LYB+isD9mjjoO1n6EvqTkUuZh/LI0oRpUwoS6vzYQNjTq58HjIni
-               Yrdzp8C9nPHl2hkaGCdjOgtqojE1v+eZ9zDQWHF+2DZd7MaD3efvj2ECnoilq0TpDuxN8t
-               lkA8ibeu18LjOesSU0f/ipNTEzZ3GJC7G+pnX2NStEBrc3n31cKtfFIkch5Ts/wip/0hVs
-               82A+e/E1CJSF0AAAWgOtHemEqfI4J/bWmUt0+jN7VLHPkkvF5DB/GviYXTWQyTE4k7IYzb
-               ltAJ5RPbaGSnlazWsi/DlpWXfYf+pNyj1ehjnfwalW+Waj4Cbd+M1U1BH6WfUO8oiN5wu8
-               6dqplFFjAG29qgcKE2Y9eQ7n+Bu+xwPyPdPjs/GPl+WKo8Uq8x0zcANT2HyYDzDoBM5JwL
-               jCpyD9BrIvDESlg5QCCtduU66M/oI7oVWcXDppPIW+8hpGYDde52VBcvhskFErASXEN9ad
-               Nd1x/oCHLkNZDxBn6IDe6QxJf2DSrIdV76x1YqpzDvqrELqdScNORlOhc9gPvFSdFHzC6x
-               fjG7xXHXo3Y2l4syppGqtLxVJKz/DlI7Ex/jjYOMcYYGC+1FOxolzJA7GA8g1YqUi4s6oU
-               CKLwb51AScj+7ATG4qxL0hnN52L84GKysBl69cdpplnnY0m1VRdHi627sieTZdq7ZXFOeK
-               osNKF6v90D+9qtKI47LDxW10jMAfaD5DDh29bnjcI95NLpfBJZogdx6VuT1gIK98Yoiifs
-               IC81mKkHjSWbD6+6fKZVVSHBgbNpYemSiM86zSMjSkYfmlHqpc4b2THZlPMhYHNreO2KHq
-               YnXX8/Hf1WIboBUS9JJ84RdQzZTaUXvKajwYqzBOFL4Yj8Wb2O8eECij8a/Pe21cWx/w9T
-               Ah6jHfW6FHxsgAFjmhJxpIItW/+CU4wA9zRSKfqKbuPpidoqSDgbhPKlFTBaiRz23sTld0
-               1piD2t92svUXc72nhQepE+emi16ay91vxi4PQ3252pPamap6+wMl2RRRlZt2KvtM0wVeSL
-               zVtJRXei5xuwDJ+3Xw+y7+BP21VxpNMvDFhtvtEYsn7z5g3ryy0NqJKN6e0jJCmxI/3oAl
-               kFw0f1ZJlEVms8YhPVKuZI3TUnO0fkGuQYSDmsv0+dUBUzpoEf2WyQ5WIez3PRl30lz9Ah
-               D1bvpAW3NFIDLaiF80ctoog78RuFnB9MPJL3xbGNDErtS7GVPH/qe49p5sFDFapNuqWM4F
-               Hyqh703WIArfZOTEZsx8yP5UaTRQrYXY/0xnbzemqWFsHQ2/xJRee9TNX9MxewjZqPjZB3
-               fMG79uM3MDUAAO41ROrIZm7Mc8OJAsHNXiFIIfGB6QHA9wR+sbdcho38Eog//dFemTyXzO
-               J7u8LT0ve+fp0vuwf5vb8FSfYVi4bZkZ0WReKcfaGihuYiyytyYs0zkqZcw+j+8hWJ3xmq
-               8HZx4n2trDJK2wP6zrxLpC05ckD11WD4K5zoZwO2enLM4uEqRTC0Az1uxwm3wiawI/lp9v
-               w3Qusoxkjz7FaH6vSl9A3U7/yKq9ZjUUePsVRulLWRBnaPfIy2/AC+auuIjelYryN+bvOx
-               HSiEPmsWGFKq/O9PmLrOX8kVg0VFHk8QU5PN8YGMvIuobrw/80tO+KOLCWhMjk63UR1lI9
-               8fIlmjK9w3A5Rzijl5u30yiytenPw6gvk6L3E/HyKKugo7SpJPdLTf0d2e8xTl910R8doB
-               BebXRMYkwyNF7jKqG5aOuxvNRnk4F425n1i9uLgcCIheGVUCFXgN9HGRn62naPsOag/aKf
-               BwE10NfqZf9TSdBwMcRQowQINaZSI0juKNT8wsAHoDfvAxy5fYSINYRLFYiC9V0kbHt2tA
-               TovLZrJxxd5SSxhWUOtmzXJCG1s5lsyHl84OGaokDmU8hHp+92/r0s87k+DdQ7XM9gv5XH
-               B+JvCfHco3gvc0onStx6iEwI9ZlD0+dR7JSRzfrNNWL8Xhai29gDd4wEMaJrZOWfHdluSk
-               6GR8QnGggF1EIaekr75kZEG9xRKtjbDWanjHno2Kgz31VqdJV/Nxj8Yksz7EAu1q0bwbjN
-               tkeuRLnh6ud5eISJDrLJCczZgh/IT9ML+WIGyUufO8olfYGm
-               -----END OPENSSH PRIVATE KEY-----
-                > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
+          echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan "114.116.32.67" >> ~/.ssh/known_hosts
       - name: deploy # 部署2
         run: |
-          ssh work@114.116.32.67 "
-            # 【注意】用 work 账号登录，手动创建 /home/work/imooc-lego 目录
-            # 然后 git clone https://username:password@github.com/imooc-lego/biz-editor-server.git -b dev （私有仓库，使用 github 用户名和密码）
-            # 记得删除 origin ，否则会暴露 github 密码
-            echo 123
-          "
+          ssh work@114.116.32.67
       - name: delete ssh key # 删除 ssh key
         run: rm -rf ~/.ssh/id_rsa
