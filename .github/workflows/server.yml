@@ -21,7 +21,6 @@ on:
 jobs:
   deploy-dev:
     runs-on: ubuntu-latest
-
     steps:
       - name: set ssh key # 临时设置 ssh key
         uses: appleboy/ssh-action@master
