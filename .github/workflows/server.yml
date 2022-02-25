@@ -20,8 +20,9 @@ on:
 
 jobs:
   deploy-dev:
-    name: Build
+
     runs-on: ubuntu-latest
+
     steps:
       - name: ssh
         uses: appleboy/ssh-action@master
@@ -30,5 +31,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWD }}
           command_timeout: 5m
-      run: |
-        echo 123123
+          script: |
+            echo 123123
