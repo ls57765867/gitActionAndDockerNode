@@ -11,7 +11,6 @@ on:
       - 'main'
     paths:
       - '.github/workflows/*'
-      # - '__test__/**' # dev 不需要立即测试
       - 'src/**'
       - 'Dockerfile'
       - 'docker-compose.yml'
