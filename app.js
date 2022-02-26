@@ -14,12 +14,7 @@ const connection = mysql.createConnection({
     database: 'test'
 });
 
-connection.connect();
-
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-});
+const result = connection.connect();
 
 // 指定一个url匹配
 router.get('/test', async (ctx) => {
@@ -35,24 +30,12 @@ router.get('/aaa', async (ctx) => {
         msg: 'aaaa'
     }
 })
+
 // 指定一个url匹配
-router.get('/test2', async (ctx) => {
-    //查，数据库代码
-    var sql = 'SELECT * FROM test';
-    const data = await new Promise(resolve => {
-        connection.query(sql, function (err, res) { //询问访问数据库，也就是去嫩那个数据库
-            if (err) { //失败就报个错。
-                console.log('[SELECT ERROR] - ', err.message);
-                return;
-            }
-            console.log("数据库查的结果：");
-            console.log(res); //成功就输出下结果
-            resolve(res)
-        });
-    })
+router.get('/', async (ctx) => {
     ctx.body = {
-        code: 0,
-        msg: data
+        data: 0,
+        msg: result
     }
 })
 
@@ -68,6 +51,6 @@ app.use(router.allowedMethods({
 
 // 启动服务监听本地3000端口
 app.listen(3000, () => {
-    console.log('13')
+    console.log('15')
     console.log('应用已经启动，http://localhost:3033');
 })
