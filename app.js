@@ -5,20 +5,21 @@ const app = new Koa(); // 创建koa应用
 const router = new Router(); // 创建路由，支持传递参数
 const mysql = require('mysql');
 const {body} = require("koa/lib/response");
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3305,
-    user: 'root',
-    password: 'crouch11',
-    database: 'test'
-});
 
-connection.connect();
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     port: 3305,
+//     user: 'root',
+//     password: 'crouch11',
+//     database: 'test'
+// });
+//
+// connection.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-});
+// connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+//     if (error) throw error;
+//     console.log('The solution is: ', results[0].solution);
+// });
 
 // 指定一个url匹配
 router.get('/test', async (ctx) => {
