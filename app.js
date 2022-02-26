@@ -11,7 +11,7 @@ const {body} = require("koa/lib/response");
 //     port: 3305,
 //     user: 'root',
 //     password: 'crouch11',
-//     database: 'test'
+//     database: 't est'
 // });
 //
 // connection.connect();
