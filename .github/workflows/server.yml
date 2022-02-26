@@ -33,7 +33,7 @@ jobs:
           command_timeout: 5m
           script: |
             cd /home/work/gitActionAndDockerNode;
-            git pull origin main; # 重新下载最新代码
+            git pull; # 重新下载最新代码
             # 启动 docker
             docker-compose build node-server; # 和 docker-compose.yml service 名字一致
             docker-compose up -d;
