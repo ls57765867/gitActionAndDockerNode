@@ -9,9 +9,8 @@ const {body} = require("koa/lib/response");
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    port: 3306,
     password: 'crouch11',
-    database: 'test'
+    database: 'sys'
 });
 
 const result = connection.connect();
@@ -51,6 +50,6 @@ app.use(router.allowedMethods({
 
 // 启动服务监听本地3000端口
 app.listen(3000, () => {
-    console.log('16')
+    console.log('17')
     console.log('应用已经启动，http://localhost:3033');
 })
