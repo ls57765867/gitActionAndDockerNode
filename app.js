@@ -8,7 +8,7 @@ const {body} = require("koa/lib/response");
 const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'crouch11',
+    password : '123456',
     database : 'test'
 });
 

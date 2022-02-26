@@ -11,7 +11,6 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shangh
 # 安装
 RUN npm set registry https://registry.npm.taobao.org
 RUN npm i
-RUN npm i pm2 -g
 
 # 启动容器时的CMD 只能有一个
 #pm2为阻塞控制台的命令
