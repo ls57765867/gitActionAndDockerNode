@@ -6,10 +6,11 @@ const router = new Router(); // 创建路由，支持传递参数
 const mysql = require('mysql');
 const {body} = require("koa/lib/response");
 const connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'crouch11',
-    database : 'test'
+    host: 'localhost',
+    port: 3305,
+    user: 'root',
+    password: 'crouch11',
+    database: 'test'
 });
 
 connection.connect();
@@ -22,8 +23,15 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
 // 指定一个url匹配
 router.get('/test', async (ctx) => {
     ctx.body = {
-        data:0,
-        msg:'test222'
+        data: 0,
+        msg: 'test222'
+    }
+})
+// 指定一个url匹配
+router.get('/aaa', async (ctx) => {
+    ctx.body = {
+        data: 0,
+        msg: 'aaaa'
     }
 })
 // 指定一个url匹配
@@ -42,8 +50,8 @@ router.get('/test2', async (ctx) => {
         });
     })
     ctx.body = {
-        code:0,
-        msg:data
+        code: 0,
+        msg: data
     }
 })
 
