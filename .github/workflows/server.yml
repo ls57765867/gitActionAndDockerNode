@@ -15,7 +15,8 @@ on:
       - 'Dockerfile'
       - 'docker-compose.yml'
       - 'bin/*'
-      - './**/*'
+      - '/**/*'
+      - '*'
       - '/app.js'
 
 jobs:
