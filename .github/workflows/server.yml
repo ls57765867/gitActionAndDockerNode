@@ -38,4 +38,3 @@ jobs:
             # 启动 docker
             docker-compose build node-server; # 和 docker-compose.yml service 名字一致
             docker-compose up -d;
-            npm run serve

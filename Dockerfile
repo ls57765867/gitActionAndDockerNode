@@ -14,3 +14,4 @@ RUN npm i
 
 # 启动容器时的CMD 只能有一个
 #pm2为阻塞控制台的命令
+CMD npm run serve
