@@ -1,11 +1,10 @@
-version: '3'  # 版本号 无所谓
+version: '3'
 services:
-  node-server: # service name 不重复即可
-    # 就是 docker build -t image(下面第八行填入的字段) .
+  editor-server:
     build:
-      context: . # 当前目录
-      dockerfile: Dockerfile # 基于 Dockerfile 构建
-    image: node-server # 依赖于当前 Dockerfile 创建出来的镜像
-    container_name: node-server
+      context: .
+      dockerfile: Dockerfile
+    image: editor-server # 依赖于当前 Dockerfile 创建镜像
+    container_name: editor-server
     ports:
       - 8081:3000 # 宿主机通过 8081 访问
