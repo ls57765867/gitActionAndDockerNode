@@ -35,7 +35,7 @@ jobs:
           command_timeout: 5m
           script: |
             cd /home/work/gitActionAndDockerNode;
-            git remote add origin https://${{ secrets.GIT_TOKEN }}@github.com/ls57765867/gitActionAndDockerNode;
+            git remote add origin https://${{ secrets.GIT_TOKEN }}@github.com/ls57765867/gitActionAndDockerNode.git;
             git checkout main;
             git pull origin main; # 重新下载最新代码
             # git remote remove origin; # 删除 origin ，否则会暴露 github 密码
