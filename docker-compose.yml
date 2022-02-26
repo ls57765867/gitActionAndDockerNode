@@ -6,9 +6,9 @@ services:
       context: . # 当前目录
       dockerfile: Dockerfile # 基于 Dockerfile 构建
     image: node-server # 依赖于当前 Dockerfile 创建出来的镜像
-    container_name: node-server # 镜像的名称 b
+    container_name: node-server
     ports:
-      - 8081:3033 # 宿主机通过 8081 访问
+      - 8081:3000 # 宿主机通过 8081 访问
   editor-mysql:
     image: mysql # 引用官网 mysql 镜像
     container_name: editor-mysql

@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'crouch11',
-    database: 't est'
+    database: 'test'
 });
 
 connection.connect();
@@ -67,7 +67,7 @@ app.use(router.allowedMethods({
 }));
 
 // 启动服务监听本地3000端口
-app.listen(3033, () => {
+app.listen(3000, () => {
     console.log(2);
     console.log('应用已经启动，http://localhost:3033');
 })
