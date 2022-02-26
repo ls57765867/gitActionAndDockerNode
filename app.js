@@ -9,6 +9,7 @@ const {body} = require("koa/lib/response");
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
+    port: 3306,
     password: 'crouch11',
     database: 'test'
 });
@@ -37,7 +38,7 @@ router.get('/aaa', async (ctx) => {
 // 指定一个url匹配
 router.get('/test2', async (ctx) => {
     //查，数据库代码
-    var sql = 'SELECT name FROM test';
+    var sql = 'SELECT * FROM test';
     const data = await new Promise(resolve => {
         connection.query(sql, function (err, res) { //询问访问数据库，也就是去嫩那个数据库
             if (err) { //失败就报个错。
