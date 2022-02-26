@@ -50,6 +50,6 @@ app.use(router.allowedMethods({
 
 // 启动服务监听本地3000端口
 app.listen(3000, () => {
-    console.log('17')
+    console.log('18')
     console.log('应用已经启动，http://localhost:3033');
 })
