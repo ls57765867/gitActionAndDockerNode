@@ -16,7 +16,7 @@ on:
       - 'docker-compose.yml'
       - 'bin/*'
       - './**/*'
-      - '*'
+      - '/*'
 
 jobs:
   deploy-dev:
@@ -33,7 +33,10 @@ jobs:
           command_timeout: 5m
           script: |
             cd /home/work/gitActionAndDockerNode;
-            git pull; # 重新下载最新代码
+            git remote add origin https://${{ secrets.GIT_TOKEN }}@github.com/ls57765867/gitActionAndDockerNode;
+            git checkout main;
+            git pull origin main; # 重新下载最新代码
+            git remote remove origin; # 删除 origin ，否则会暴露 github 密码
             # 启动 docker
             docker-compose build node-server; # 和 docker-compose.yml service 名字一致
             docker-compose up -d;
