@@ -6,14 +6,6 @@ const router = new Router(); // 创建路由，支持传递参数
 const mysql = require('mysql');
 const {body} = require("koa/lib/response");
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'crouch11',
-    database: 'sys'
-});
-
-const result = connection.connect();
 
 // 指定一个url匹配
 router.get('/test', async (ctx) => {
@@ -50,6 +42,6 @@ app.use(router.allowedMethods({
 
 // 启动服务监听本地3000端口
 app.listen(3000, () => {
-    console.log('18')
+    console.log('19')
     console.log('应用已经启动，http://localhost:3033');
 })
