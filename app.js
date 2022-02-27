@@ -3,7 +3,6 @@ const Router = require('koa-router'); // 引入koa-router
 
 const app = new Koa(); // 创建koa应用
 const router = new Router(); // 创建路由，支持传递参数
-const mysql = require('mysql');
 const {body} = require("koa/lib/response");
 
 
@@ -22,11 +21,30 @@ router.get('/aaa', async (ctx) => {
     }
 })
 
+
+/**
+ * @description mysql2 连接测试
+ * @author 双越
+ */
+
+const mysql = require('mysql2/promise')
+
+async function testMysqlConn() {
+    const connection = await mysql.createConnection({
+        host:'localhost',
+        user:'root',
+        password:'crouch11'
+    })
+    const [rows] = await connection.execute('select now();')
+    return rows
+}
+
 // 指定一个url匹配
 router.get('/', async (ctx) => {
+    const rows = await testMysqlConn()
     ctx.body = {
         data: 0,
-        msg: result
+        msg:rows
     }
 })
 
