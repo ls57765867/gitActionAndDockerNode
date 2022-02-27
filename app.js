@@ -29,22 +29,23 @@ router.get('/aaa', async (ctx) => {
 
 const mysql = require('mysql2/promise')
 
-async function testMysqlConn() {
-    const connection = await mysql.createConnection({
-        host:'localhost',
-        user:'root',
-        password:'crouch11'
-    })
-    const [rows] = await connection.execute('select now();')
-    return rows
-}
+
 
 // 指定一个url匹配
 router.get('/', async (ctx) => {
+    async function testMysqlConn() {
+        const connection = await mysql.createConnection({
+            host:'localhost',
+            user:'root',
+            password:'crouch11'
+        })
+        const [rows] = await connection.execute('select now();')
+        return rows
+    }
     const rows = await testMysqlConn()
     ctx.body = {
         data: 0,
-        msg:rows
+        msg:rows.length
     }
 })
 
@@ -60,6 +61,6 @@ app.use(router.allowedMethods({
 
 // 启动服务监听本地3000端口
 app.listen(3000, () => {
-    console.log('23')
+    console.log('24')
     console.log('应用已经启动，http://localhost:3033');
 })
