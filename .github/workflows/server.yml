@@ -19,15 +19,13 @@ on:
       - '*'
       - '/app.js'
 
-
-
 jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: ssh
-        uses: appleboy/ssh-action@master
+      - uses: actions/checkout@v2 # 更新代码
+      - name: run
+        uses: appleboy/ssh-action@master # ssh连接
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
