@@ -35,7 +35,8 @@ const mysql = require('mysql2/promise')
 router.get('/', async (ctx) => {
     async function testMysqlConn() {
         const connection = await mysql.createConnection({
-            host:'localhost',
+            // 和 docker-compose 中配置的 service 名字一致
+            host:'editor-mysql',
             user:'root',
             password:'crouch11'
         })
@@ -61,6 +62,6 @@ app.use(router.allowedMethods({
 
 // 启动服务监听本地3000端口
 app.listen(3000, () => {
-    console.log('24')
+    console.log('25')
     console.log('应用已经启动，http://localhost:3033');
 })
